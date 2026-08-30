@@ -16,11 +16,12 @@ A personal portfolio website for showcasing projects, experience, and contact de
 
 ## Getting Started
 
-`ash
-cd portfolio
-npm install
-npm run dev
-`
+1. Open a terminal in the project folder.
+2. Install dependencies:
+   cd portfolio
+   npm install
+3. Start the app:
+   npm run dev
 
 ## Run the Application
 
@@ -30,13 +31,11 @@ Open the app in your browser:
 
 ## Environment Variables
 
-Create a .env file in the project root if needed:
+Create a .env file in the project root if needed with values like:
 
-`env
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/your-db-name
 JWT_SECRET=your-secret-key
-`
 
 ## Notes
 
