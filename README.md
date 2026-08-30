@@ -1,41 +1,41 @@
-﻿# ' + $project.Name + @'
+﻿# portfolio
 
-' + $project.Description + @'
+A personal portfolio website for showcasing projects, experience, and contact details with a modern frontend and email-capable backend.
 
 ## Tech Stack
 
-- ' + $project.Stack + @'
+- React, Vite, Tailwind CSS, Express, Node.js
 
 ## Features
 
-' + $featureList + @'
+System.Object[]
 
 ## Getting Started
 
-```bash
-cd ' + $project.Name + @'
+`ash
+cd portfolio
 npm install
 npm run dev
-```
-
-## Run the Application
+`",
+    ",
+    
 
 Open the app in your browser:
 
-- ' + $project.Url + @'
+- http://localhost:5173
 
 ## Environment Variables
 
-Create a `.env` file in the project root if needed:
+Create a .env file in the project root if needed:
 
-```env
+`env
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/your-db-name
 JWT_SECRET=your-secret-key
-```
+`",
+    ",
+    
 
-## Notes
-
-- Keep secrets and credentials in `.env`.
+- Keep secrets and credentials in .env.
 - Use separate branches for features and fixes.
 - This folder is an independent Git repository.
