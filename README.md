@@ -1,44 +1,58 @@
 ﻿# portfolio
 
-A personal portfolio website showcasing projects, skills, and contact details.
+A personal portfolio website for showcasing projects, experience, and contact details with a modern frontend and email-capable backend.
 
 ## Tech Stack
+
 - React, Vite, Tailwind CSS, Express, Node.js
 
 ## Features
-- Portfolio landing page
-- Project showcase
-- Contact form integration
-- Responsive design
-- Backend mail sending
 
-## Project Overview
-This project is now managed as an independent Git repository so it can be developed, versioned, and published separately from the other MERN apps.
+- Portfolio homepage
+- Project showcase
+- About and experience sections
+- Contact form
+- Backend email sending
 
 ## Getting Started
 
 `ash
 cd portfolio
-npm install
-npm install; npm run dev
+npm install`n`n npm run dev
 `
 
-## Run the App
-Open $(System.Collections.Hashtable.Url) in your browser after starting the development server.
+## Run the Application
 
-## Folder Structure
+After installation, open the app in the browser:
+
+- Frontend: http://localhost:5173
+
+## Project Structure
+
 `	ext
 portfolio/
-├── src/
-├── public/
-├── server/
-├── client/
-├── package.json
 ├── README.md
+├── package.json
+├── .gitignore
+├── src/ or client/
+├── public/
+├── server/ or routes/
+├── model/ or models/
 └── .env.example
 `
 
+## Environment Variables
+
+Create a .env file in the project root if required and add your configuration values such as:
+
+`env
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/your-db-name
+JWT_SECRET=your-secret-key
+`
+
 ## Notes
-- Keep environment variables in a .env file.
-- Do not commit sensitive tokens or credentials.
-- Use a separate branch for new features and bug fixes.
+
+- Keep your secrets and credentials in .env, never in source control.
+- Use separate branches for new features and bug fixes.
+- This folder is now an independent Git repository.
