@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const aiApiKey = process.env.OPENAI_API_KEY || "";
+const aiApiKey = process.env.GEMINI_API_KEY || "";
 
 app.use(cors());
 app.use(express.json());
@@ -80,26 +80,21 @@ app.post("/api/chat", async (req, res) => {
       });
     }
 
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    const response = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${aiApiKey}`,
+        "x-goog-api-key": aiApiKey,
       },
       body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [
-          {
-            role: "system",
-            content:
-              "You are Rahul Patel's portfolio assistant. Answer briefly, professionally, and in a helpful tone. Talk about his skills, projects, and how to contact him. Keep the answers grounded in this portfolio context.",
-          },
-          {
-            role: "user",
-            content: String(message),
-          },
-        ],
-        temperature: 0.7,
+        systemInstruction: {
+          parts: [{ text: "You are Rahul Patels portfolio assistant. Answer briefly, professionally, and in a helpful tone. Talk about his skills, projects, and how to contact him. Keep answers grounded in this portfolio context." }],
+        },
+        contents: [{
+          role: "user",
+          parts: [{ text: String(message) }],
+        }],
+        generationConfig: { temperature: 0.7 },
       }),
     });
 
@@ -108,7 +103,7 @@ app.post("/api/chat", async (req, res) => {
     }
 
     const data = await response.json();
-    const reply = data.choices?.[0]?.message?.content?.trim();
+    const reply = data.candidates?.[0]?.content?.parts?.map((part) => part.text || "").join("").trim();
 
     return res.json({
       ok: true,
