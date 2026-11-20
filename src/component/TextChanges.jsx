@@ -1,11 +1,12 @@
-import React, { useEffectEvent } from 'react'
 import { useState, useEffect } from 'react'
+
+const texts = [
+  "Hi, I'm Rahul Patel",
+  "Hi, I'm Rahul Patel",
+  "Hi, I'm Rahul Patel",
+];
+
 const TextChanges = () => {
-    const texts = [
-      "Hi, I'm Rahul Patel",
-      "Hi, I'm Rahul Patel",
-      "Hi, I'm Rahul Patel",
-    ];
     const [currentText, setCurrentText] = useState("");
     const [endValue, setendValue] = useState(true);
     const [isForward, setIsForward] = useState(true);
@@ -29,7 +30,7 @@ const TextChanges = () => {
         }, 50);
         return ()=> clearInterval(intervalid);
 
-    }, [endValue,isForward,index,texts]);
+    }, [endValue,isForward,index]);
   return (
     <div className='trasition ease duration-300'>{currentText}
       

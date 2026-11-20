@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { FaBolt, FaPaperPlane, FaRobot } from "react-icons/fa6";
 
+let nextMessageId = 2;
+
 const quickPrompts = [
   "What services do you offer?",
   "Tell me about Rahul's projects",
@@ -31,7 +33,7 @@ const Chatbot = ({ darkMode }) => {
     if (!trimmed || isLoading) return;
 
     const userMessage = {
-      id: Date.now(),
+      id: nextMessageId++,
       sender: "user",
       text: trimmed,
     };
@@ -54,18 +56,18 @@ const Chatbot = ({ darkMode }) => {
       setMessages((prev) => [
         ...prev,
         {
-          id: Date.now() + 1,
+          id: nextMessageId++,
           sender: "bot",
           text:
             data.reply ||
             "I’m here to help with Rahul’s work and portfolio. Try asking about his projects or tech stack.",
         },
       ]);
-    } catch (error) {
+    } catch {
       setMessages((prev) => [
         ...prev,
         {
-          id: Date.now() + 2,
+          id: nextMessageId++,
           sender: "bot",
           text:
             "The assistant is temporarily unavailable. Please try again in a moment or contact Rahul directly.",
